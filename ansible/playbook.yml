@@ -1,0 +1,51 @@
+- hosts: app_servers
+  vars:
+    submodules:
+      - name: Cronjob-Service
+        branch: "{{ submodule_cronjob_branch }}"
+      - name: Data-Interface
+        branch: "{{ submodule_data_interface_branch }}"
+      - name: Visualization
+        branch: "{{ submodule_visualization_branch }}"
+      - name: Infrastructure
+        branch: "{{ submodule_infrastructure_branch }}"
+  tasks:
+    - name: Ensure main repo and submodules are present
+      ansible.builtin.git:
+        repo: 'https://github.com/FogCast-Konstanz/FogCast.git'
+        dest: ~/FogCast
+        version: HEAD
+        recursive: yes
+        update: yes
+
+    - name: Checkout correct branch in submodules
+      ansible.builtin.command: |
+        git checkout {{ item.branch }}
+      args:
+        chdir: ~/FogCast/{{ item.name }}
+      loop: "{{ submodules }}"
+
+    - name: Pull latest changes
+      ansible.builtin.command: |
+        git pull
+      args:
+        chdir: ~/FogCast/{{ item.name }}
+      loop: "{{ submodules }}"
+
+    - name: Build Docker containers
+      ansible.builtin.command: docker compose build
+      args:
+        chdir: ~/FogCast/{{ item.name }}
+      loop: "{{ submodules }}"
+
+    - name: Start Docker containers
+      ansible.builtin.command: docker compose up -d
+      args:
+        chdir: ~/FogCast/{{ item.name }}
+      loop: "{{ submodules }}"
+    
+    - name: Restart reverse proxy container
+      command: docker restart fogcast-reverse-proxy
+  
+    - name: Cleanup unused Docker images
+      command: docker image prune -f

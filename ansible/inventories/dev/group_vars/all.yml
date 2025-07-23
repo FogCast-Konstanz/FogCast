@@ -1,0 +1,4 @@
+submodule_cronjob_branch: development
+submodule_data_interface_branch: development
+submodule_infrastructure_branch: main
+submodule_visualization_branch: develop
