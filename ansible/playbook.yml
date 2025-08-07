@@ -17,19 +17,15 @@
         version: HEAD
         recursive: yes
         update: yes
+        force: yes
 
-    - name: Checkout correct branch in submodules
-      ansible.builtin.command: |
-        git checkout {{ item.branch }}
-      args:
-        chdir: ~/FogCast/{{ item.name }}
-      loop: "{{ submodules }}"
-
-    - name: Pull latest changes
-      ansible.builtin.command: |
-        git pull
-      args:
-        chdir: ~/FogCast/{{ item.name }}
+    - name: Clone service repositories
+      ansible.builtin.git:
+        repo: "https://github.com/FogCast-Konstanz/{{ item.name }}.git"
+        dest: "~/FogCast/{{ item.name }}"
+        version: "{{ item.branch }}"
+        update: yes
+        force: yes
       loop: "{{ submodules }}"
 
     - name: Build Docker containers
