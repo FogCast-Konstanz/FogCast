@@ -39,9 +39,9 @@
       args:
         chdir: ~/FogCast/{{ item.name }}
       loop: "{{ submodules }}"
-    
+
     - name: Restart reverse proxy container
       command: docker restart fogcast-reverse-proxy
-  
+
     - name: Cleanup unused Docker images
       command: docker image prune -f

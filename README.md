@@ -6,37 +6,26 @@ FogCast is a project developed as part of the 2024/25 Master of Computer Science
 
 ### Prerequisites
 
-1. **Git Submodules**:
-   - This project uses Git submodules. To initialize and update them, run:
-     ```bash
-     git submodule update --init --recursive
-     ```
-
-2. **Ansible**:
+1. **Ansible**:
    - Ensure you have Ansible installed. You can install it using pip:
      ```bash
      pip install ansible
      ```
    - Ansible is used for automating deployment and configuration tasks.
 
-3. **Docker**:
+2. **Docker**:
    - Install Docker and Docker Compose to manage containerized services.
 
 ### Setting Up the Project
 
 1. Clone the repository:
    ```bash
-   git clone --recurse-submodules <repository-url>
+   git clone <repository-url>
    ```
 
 2. Navigate to the project directory:
    ```bash
    cd FogCast
-   ```
-
-3. Initialize and update submodules (if not done during cloning):
-   ```bash
-   git submodule update --init --recursive
    ```
 
 ### Development Workflow
