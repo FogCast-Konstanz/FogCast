@@ -10,7 +10,7 @@
       - name: Infrastructure
         branch: "{{ submodule_infrastructure_branch }}"
   tasks:
-    - name: Ensure main repo and submodules are present
+    - name: Ensure main repo is present
       ansible.builtin.git:
         repo: 'https://github.com/FogCast-Konstanz/FogCast.git'
         dest: ~/FogCast
