@@ -20,7 +20,7 @@ FogCast is a project developed as part of the 2024/25 Master of Computer Science
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/FogCast-Konstanz/FogCast.git 
    ```
 
 2. Navigate to the project directory:
@@ -28,44 +28,21 @@ FogCast is a project developed as part of the 2024/25 Master of Computer Science
    cd FogCast
    ```
 
-### Development Workflow
+### Other Repositories
 
-- **Frontend**:
-  - Navigate to the `Visualization` directory and install dependencies:
-    ```bash
-    cd Visualization
-    npm install
-    ```
-  - Start the development server:
-    ```bash
-    npm run dev
-    ```
+The other repositories, that are part of this project are:
 
-- **Backend**:
-  - Navigate to the `Data-Interface` directory and set up the Python environment:
-    ```bash
-    cd Data-Interface
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
-  - Run the backend service:
-    ```bash
-    python backend/app.py
-    ```
+- [**Cronjob-Service**](https://github.com/FogCast-Konstanz/Cronjob-Service.git): The repository that holds the implementation of the cronjobs used to gather and preprocess weather information.
 
-- **Cronjob Service**:
-  - Navigate to the `Cronjob-Service` directory and set up the Python environment:
-    ```bash
-    cd Cronjob-Service
-    python -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    ```
-  - Run a specific cron job:
-    ```bash
-    python bin/main.py run_single_job_now=<cronjob_class_name>
-    ```
+- [**Visualization**](https://github.com/FogCast-Konstanz/Visualization.git): The frontend of our website is developed in React. 
+
+- [**Data-Interface**](https://github.com/FogCast-Konstanz/Data-Interface.git): The backend is written in Python using Flask.
+
+- [**Infrastructure**](https://github.com/FogCast-Konstanz/Infrastructure.git): The infrastructure repository holds the config for the reverse proxy and InfluxDB containers.
+
+- [**Weatherstation-Services**](https://github.com/FogCast-Konstanz/weatherstation-sevices.git): This repository holds the code of the services that run on our weatherstation at the HTWG-Konstanz.
+
+- [**Models-and-Forecasting**](https://github.com/FogCast-Konstanz/models-and-forecasting.git): This repository focuses on quantifying model performance and improving forecast quality. Vision of creating a own FogCast ensemble model for better forecasting performance in Constance.
 
 ## Deployment
 
@@ -73,11 +50,7 @@ Deployment is managed using Ansible. The playbooks are located in the `ansible` 
 There are separate inventories for development and production environments.
 
 Before deploying, ensure you have the `inventories/dev/hosts.ini` and `inventories/prod/hosts.ini` files configured with the appropriate server details.
-The template for the hosts file is the following:
-```ini
-[app_servers]
-dev-server ansible_host=<<IP>> ansible_user=<<USER>>
-```
+There is an example file which is called `inventories/dev/hosts.example.ini` which has to be renamed to `hosts.ini` and changed accordingly.
 
 To deploy the application to the development environment, run:
 ```bash
