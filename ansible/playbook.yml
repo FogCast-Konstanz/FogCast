@@ -10,15 +10,6 @@
       - name: Infrastructure
         branch: "{{ submodule_infrastructure_branch }}"
   tasks:
-    - name: Ensure main repo is present
-      ansible.builtin.git:
-        repo: 'https://github.com/FogCast-Konstanz/FogCast.git'
-        dest: ~/FogCast
-        version: HEAD
-        recursive: yes
-        update: yes
-        force: yes
-
     - name: Clone service repositories
       ansible.builtin.git:
         repo: "https://github.com/FogCast-Konstanz/{{ item.name }}.git"
