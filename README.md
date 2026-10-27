@@ -91,6 +91,7 @@ flowchart LR
 | [**weather-station-pico**](https://github.com/FogCast-Konstanz/weather-station-pico) | second station with more sensors (UV, pressure, IMU), **not connected yet** | MicroPython, Raspberry Pi Pico 2 | – | – |
 | [**models-and-forecasting**](https://github.com/FogCast-Konstanz/models-and-forecasting) | model benchmarking analyses, AI forecasting pipeline (RF, LSTM, CNN) | Python, scikit-learn, TensorFlow | dev server (cron) | manual |
 | [**presentations**](https://github.com/FogCast-Konstanz/presentations) | slides and talks of the project | LaTeX, PowerPoint | – | – |
+| [**presentations2**](https://github.com/FogCast-Konstanz/presentations2) | slides and documentation of Fogcast2 | Word, PowerPoint | – | – |
 
 > The repository name `weatherstation-sevices` contains a typo, but it is the real name; do not "fix" it in links.
 
